@@ -4,17 +4,17 @@
 
 Parameters here are actually URI query and can be linked together with `&` to generate a complex feed.
 
-Parameters here need to be placed after the route path. Some routes may have <span color=green>**custom route parameters**</span> and <span color=violet>**parameters here**</span> need to be placed after them.
+Parameters here need to be placed after the route path. Some routes may have <span style="color: green">**custom route parameters**</span> and <span style="color: violet">**parameters here**</span> need to be placed after them.
 
 E.g.
 
-<a href="https://rsshub.app/twitter/user/durov/readable=1&includeRts=0?brief=100&limit=5">https://rsshub.app/twitter/user/durov/<span color=green><b>readable=1&includeRts=0</b></span>?<span color=violet><b>brief=100&limit=5</b></span></a>
+<a href="https://rsshub.app/twitter/user/durov/readable=1&includeRts=0?brief=100&limit=5">https://rsshub.app/twitter/user/durov/<span style="green"><b>readable=1&includeRts=0</b></span>?<span style="color: violet"><b>brief=100&limit=5</b></span></a>
 
-If a <span color=magenta>**output format**</span> (`.atom`, `.rss`, `.debug.json`) is set, it needs to be placed between the route path (including <span color=green>**custom route parameters**</span>) and <span color=violet>**other parameters**</span>.
+If a <span style="color: magenta">**output format**</span> (`.atom`, `.rss`, `.json`, `.debug.json`) is set, it needs to be placed between the route path (including <span style="green">**custom route parameters**</span>) and <span style="color: violet">**other parameters**</span>.
 
 E.g.
 
-<a href="https://rsshub.app/twitter/user/durov/readable=1&includeRts=0.atom?brief=100&limit=5">https://rsshub.app/twitter/user/durov/<span color=green><b>readable=1&includeRts=0</b></span><span color=magenta><b>.atom</b></span>?<span color=violet><b>brief=100&limit=5</b></span></a>
+<a href="https://rsshub.app/twitter/user/durov/readable=1&includeRts=0.atom?brief=100&limit=5">https://rsshub.app/twitter/user/durov/<span style="color: green"><b>readable=1&includeRts=0</b></span><span style="color: magenta"><b>.atom</b></span>?<span style="color: violet"><b>brief=100&limit=5</b></span></a>
 
 :::
 
@@ -48,6 +48,8 @@ Set `filter` to include the content
 
 -   `filter_author`: filter `author` only
 
+-   `filter_category`: filter `category` only
+
 -   `filter_time`: filter `pubDate`, in seconds, return specified time range. Item without `pubDate` will not be filtered.
 
 E.g. [https://rsshub.app/dribbble/popular?filter=Blue|Yellow|Black](https://rsshub.app/dribbble/popular?filter=Blue|Yellow|Black)
@@ -62,6 +64,8 @@ Set `filterout` to exclude unwanted content.
 
 -   `filterout_author`: filter `author` only
 
+-   `filterout_category`: filter `category` only
+
 E.g. [https://rsshub.app/dribbble/popular?filterout=Blue|Yellow|Black](https://rsshub.app/dribbble/popular?filterout=Blue|Yellow|Black)
 
 Set `filter_case_sensitive` to determine whether the filtering keywords should be case sensitive. The parameter would apply to both `filter` and `filterout`.
@@ -75,6 +79,12 @@ E.g. [https://rsshub.app/dribbble/popular?filter=BluE|yeLLow|BlaCK&filter_case_s
 Set `limit` to limit the number of articles in the feed.
 
 E.g. Dribbble Popular Top 10 [https://rsshub.app/dribbble/popular?limit=10](https://rsshub.app/dribbble/popular?limit=10)
+
+## Sorted
+
+Set `sorted` to control whether to sort the output by the publish date (`pubDate`). This is useful for some feeds that pin some entries at the top. Default to `true` i.e. the output is sorted.
+
+E.g. NJU Undergraduate Bulletin Board <https://rsshub.app/nju/jw/ggtz?sorted=false>
 
 ## Fulltext
 
@@ -128,13 +138,14 @@ There are more details in the [FAQ](/en/faq.html).
 
 ## Output Formats
 
-RSSHub conforms to RSS 2.0 and Atom Standard, simply append `.rss` `.atom` to the end of the feed address to obtain the feed in corresponding format. The default output format is RSS 2.0.
+RSSHub conforms to RSS 2.0, Atom and JSON Feed Standard, simply append `.rss`, `.atom` or `.json` to the end of the feed address to obtain the feed in corresponding format. The default output format is RSS 2.0.
 
 E.g.
 
 -   Default (RSS 2.0) - [https://rsshub.app/dribbble/popular](https://rsshub.app/dribbble/popular)
 -   RSS 2.0 - [https://rsshub.app/dribbble/popular.rss](https://rsshub.app/dribbble/popular.rss)
 -   Atom - [https://rsshub.app/dribbble/popular.atom](https://rsshub.app/dribbble/popular.atom)
+-   JSON Feed - [https://rsshub.app/twitter/user/DIYgod.json](https://rsshub.app/twitter/user/DIYgod.json)
 -   Apply filters or URL query - [https://rsshub.app/dribbble/popular.atom?filterout=Blue|Yellow|Black](https://rsshub.app/dribbble/popular.atom?filterout=Blue|Yellow|Black)
 
 ### Debug
